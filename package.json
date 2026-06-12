@@ -1,0 +1,87 @@
+{
+  "name": "honkit-plugin-mermaid-next",
+  "version": "1.0.0",
+  "description": "HonKit plugin for Mermaid 11/12 diagrams with CDN loading, dark mode, SPA re-rendering, lazy loading, and error handling.",
+  "main": "index.js",
+  "license": "MIT",
+  "keywords": [
+    "honkit",
+    "honkit-plugin",
+    "gitbook-plugin",
+    "mermaid",
+    "diagram"
+  ],
+  "engines": {
+    "honkit": ">=6.0.0",
+    "node": ">=22"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/user/honkit-plugin-mermaid-next.git"
+  },
+  "bugs": {
+    "url": "https://github.com/user/honkit-plugin-mermaid-next/issues"
+  },
+  "homepage": "https://github.com/user/honkit-plugin-mermaid-next#readme",
+  "dependencies": {
+    "mermaid": "^11.0.0"
+  },
+  "files": [
+    "index.js",
+    "assets"
+  ],
+  "honkit": {
+    "properties": {
+      "theme": {
+        "type": "string",
+        "default": "auto",
+        "description": "Mermaid theme: default, dark, forest, neutral, neo, neo-dark, base, or auto."
+      },
+      "cdn": {
+        "type": "boolean",
+        "default": true,
+        "description": "Load Mermaid from a CDN URL. Set to false and provide mermaidCdn for local hosting."
+      },
+      "mermaidVersion": {
+        "type": "string",
+        "default": "11",
+        "description": "Major Mermaid version used in the default jsDelivr URL, for example 11 or 12."
+      },
+      "mermaidCdn": {
+        "type": "string",
+        "default": "",
+        "description": "Full or relative URL for the Mermaid ESM build."
+      },
+      "lazy": {
+        "type": "boolean",
+        "default": false,
+        "description": "Render diagrams only when they enter the viewport."
+      },
+      "lazyMargin": {
+        "type": "string",
+        "default": "200px",
+        "description": "IntersectionObserver rootMargin for lazy rendering."
+      },
+      "securityLevel": {
+        "type": "string",
+        "default": "loose",
+        "description": "Mermaid securityLevel passed to mermaid.initialize."
+      },
+      "escapeHtml": {
+        "type": "boolean",
+        "default": true,
+        "description": "Escape diagram source before inserting it into the page."
+      },
+      "errorRenderer": {
+        "type": "boolean",
+        "default": true,
+        "description": "Show a readable error block when a diagram cannot be rendered."
+      },
+      "config": {
+        "type": "object",
+        "default": {},
+        "description": "Additional Mermaid configuration merged into mermaid.initialize."
+      }
+    }
+  }
+}
