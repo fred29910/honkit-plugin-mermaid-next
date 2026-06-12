@@ -20,10 +20,63 @@ const state = {
   options: null
 };
 
+const fs = require("fs");
+const path = require("path");
+
+function detectAndCopyMermaid(book) {
+  const bookRoot = getBookRoot(book);
+  if (!bookRoot) {
+    return null;
+  }
+
+  const mermaidEsmPath = path.join(bookRoot, "node_modules", "mermaid", "dist", "mermaid.esm.min.mjs");
+  if (!fs.existsSync(mermaidEsmPath)) {
+    return null;
+  }
+
+  const assetsDir = path.join(bookRoot, "assets");
+  if (!fs.existsSync(assetsDir)) {
+    fs.mkdirSync(assetsDir, { recursive: true });
+  }
+
+  const targetPath = path.join(assetsDir, "mermaid.esm.min.mjs");
+  fs.copyFileSync(mermaidEsmPath, targetPath);
+
+  return "/assets/mermaid.esm.min.mjs";
+}
+
+function getBookRoot(book) {
+  if (!book) {
+    return null;
+  }
+
+  if (book.root) {
+    return book.root;
+  }
+
+  if (book.config && book.config.root) {
+    return book.config.root;
+  }
+
+  if (book.config && book.config.get && typeof book.config.get === "function") {
+    return book.config.get("root");
+  }
+
+  return process.cwd();
+}
+
 module.exports = {
   hooks: {
     init: function () {
-      state.options = getPluginOptions(this.book);
+      const book = this.book;
+      state.options = getPluginOptions(book);
+
+      const localMermaidPath = detectAndCopyMermaid(book);
+      if (localMermaidPath && !state.options.mermaidCdn) {
+        state.options.cdn = false;
+        state.options.mermaidCdn = localMermaidPath;
+      }
+
       return state.options;
     },
 

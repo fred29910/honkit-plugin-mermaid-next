@@ -1,6 +1,6 @@
 {
   "name": "honkit-plugin-mermaid-next",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "HonKit plugin for Mermaid 11/12 diagrams with CDN loading, dark mode, SPA re-rendering, lazy loading, and error handling.",
   "main": "index.js",
   "license": "MIT",
@@ -17,12 +17,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/user/honkit-plugin-mermaid-next.git"
+    "url": "https://github.com/fred29910/honkit-plugin-mermaid-next.git"
   },
   "bugs": {
-    "url": "https://github.com/user/honkit-plugin-mermaid-next/issues"
+    "url": "https://github.com/fred29910/honkit-plugin-mermaid-next/issues"
   },
-  "homepage": "https://github.com/user/honkit-plugin-mermaid-next#readme",
+  "homepage": "https://github.com/fred29910/honkit-plugin-mermaid-next#readme",
   "dependencies": {
     "mermaid": "^11.0.0"
   },
